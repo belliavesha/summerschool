@@ -14,9 +14,9 @@ double **malloc_2d(int nx, int ny)
     double **array;
     int i;
 
-    array = malloc(nx* sizeof(double*))
+    array = malloc(nx* sizeof(double*));
     for ( i = 0; i<nx; i++){
-        array[i] = malloc(ny*sizeof(double))
+        array[i] = malloc(ny*sizeof(double));
     }
     // DONE
     return array;
