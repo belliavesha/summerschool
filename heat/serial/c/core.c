@@ -32,11 +32,11 @@ void evolve(field *curr, field *prev, double a, double dt)
     }
     for (i = 0; i<nx+2; i++){
          curr->data[i][0]=curr->data[i][1];
-         curr->data[i][n+1]=curr->data[i][n];
+         curr->data[i][ny+1]=curr->data[i][ny];
     }    
     for (j = 0; j<ny+2; j++){
          curr->data[0][j]=curr->data[1][j];
-         curr->data[ny+1][j]=curr->data[ny][j];
+         curr->data[nx+1][j]=curr->data[nx][j];
     }
     // DONE
 
