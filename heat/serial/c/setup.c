@@ -85,8 +85,15 @@ void generate_field(field *temperature)
     temperature->data =
         malloc_2d(temperature->nx + 2, temperature->ny + 2);
 
-    /* TODO: Initialize the values of temperature */
-#error Add field initialization
+    // DONE
+    int ci = temperature->nx/2
+    int cj = temperature->ny/2
+    int r2 = ci*ci/9
+    for (i = 0; i<temperature->nx+2; i++){
+        for(j = 0; j< temperature->ny+2; j++){
+            temperature->data[i][j]=(i-ci)(i-ci)+(j-cj)*(j-cj)>r2 ? 300 : 666
+        }
+    }
 
 }
 
