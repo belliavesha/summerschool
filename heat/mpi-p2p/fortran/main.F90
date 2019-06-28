@@ -25,7 +25,7 @@ program heat_solve
   real(kind=dp) :: start, stop ! Timers
 
   ! TODO start: initialize MPI
-
+   call MPI_INIT()
   ! TODO end
 
   call initialize(current, previous, nsteps, parallelization)
@@ -61,7 +61,7 @@ program heat_solve
   call finalize(current, previous)
 
   ! TODO start: finalize MPI
-
+   CALL MPI_FINALIZE()
   ! TODO end
 
 end program heat_solve

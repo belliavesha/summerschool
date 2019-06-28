@@ -15,12 +15,27 @@ contains
 
     integer :: ierr
 
+    integer ny,nx,stat 
+    
+    print*, MPI_COMM_WORLD
+
+    nx = field0%nx
+    ny = field0%ny
+
     ! TODO start: implement halo exchange
     ! Send to left, receive from right
 
+    ! call MPI_send()
+    call MPI_Sendrecv(field0%data(:,ny),nx+2,MPI_double_precision,parallel%nright,1,&
+                      field0%data(:,0), nx+2,MPI_double_precision,parallel%rank,  1,&
+                      MPI_COMM_WORLD,MPI_STATUS_IGNORE,ierr)
+    call MPI_Sendrecv(field0%data(:,1),    nx+2,MPI_double_precision,parallel%nleft,2,&
+                      field0%data(:,ny+1), nx+2,MPI_double_precision,parallel%rank, 2,&
+                      MPI_COMM_WORLD,MPI_STATUS_IGNORE)
     ! Send to right, receive from left
-
     ! TODO end
+    ! Send to left, receive from right
+
 
   end subroutine exchange
 
